@@ -6,37 +6,43 @@ import { Component } from '@angular/core';
   template: `
     <section class="container">
       <!-- This article element represents and entire listing -->
-      <article class="listing">
+
+      @for (car of carList; track car) {
+        <article class="listing">
         <div class="image-parent">
-          <img class="product-image" src="https://placehold.co/100x100" />
+          <img class="product-image" src="../assets/{{car.color}}-car.jpeg" />
         </div>
         <section class="details">
-          <p class="title"><!-- car make and model--></p>
+          <p class="title">{{car.make}} {{car.model}}<!-- car make and model--></p>
           <hr />
           <p class="detail">
             <span>Year</span>
-            <span><!-- year --></span>
+            <span>{{car.year}}</span>
           </p>
           <div class="detail">
             <span>Transmission</span>
-            <span><!-- transmission --></span>
+            <span>{{car.transmission}}</span>
           </div>
           <p class="detail">
             <span>Mileage</span>
-            <span><!-- miles --></span>
+            <span>{{car.miles}}</span>
           </p>
           <p class="detail">
             <span>Price</span>
-            <span><!-- price --></span>
+            <span>{{car.price}}</span>
           </p>
         </section>
       </article>
+      } @empty {
+        <p>No cars to show</p>
+      }
     </section>
   `,
   styleUrl: 'app.component.css',
 })
 export class AppComponent {
   carList = [
+    
     {
       make: 'Foyoda',
       model: 'Famery',
@@ -44,6 +50,7 @@ export class AppComponent {
       price: 1000,
       year: 2022,
       transmission: 'Automatic',
+      color: 'blue'
     },
     {
       make: 'Ronda',
@@ -52,6 +59,7 @@ export class AppComponent {
       price: 230,
       year: 1991,
       transmission: 'Automatic',
+      color: 'red'
     },
     {
       make: 'Specific Motors',
@@ -60,6 +68,7 @@ export class AppComponent {
       price: 230,
       year: 1991,
       transmission: 'Automatic',
+      color: 'blue'
     },
     {
       make: 'Fjord',
@@ -68,6 +77,7 @@ export class AppComponent {
       price: 22330,
       year: 2023,
       transmission: 'Automatic',
+      color: 'red'
     },
   ];
 }
